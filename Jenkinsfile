@@ -9,17 +9,19 @@ pipeline {
             }
         }
         stage('Build') {
-            steps {
-                echo 'Building project...'
-                sh 'ls -l'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying to EC2...'
-               
-                sh 'sudo cp -r * /var/www/html/'
-            }
-        }
+    steps {
+        echo 'Building project...'
+        sh 'npm install'
+        sh 'npm run build'
     }
+}
+
+stage('Deploy') {
+    steps {
+        echo 'Deploying to Apache...'
+        sh 'sudo rm -rf /var/www/html/*'
+        sh 'sudo cp -r build/* /var/www/html/'
+    }
+}
+}
 }
