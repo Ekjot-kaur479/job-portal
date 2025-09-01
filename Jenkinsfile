@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying to EC2...'
-                # Example for HTML site:
+               
                 sh 'sudo cp -r * /var/www/html/'
             }
         }
