@@ -10,9 +10,9 @@ pipeline {
         }
         stage('Build') {
     steps {
-        echo 'Building project...'
-        sh 'npm install'
-        sh 'npm run build'
+        echo 'Building React app...'
+        sh 'CI=false npm install'
+        sh 'CI=false npm run build'
     }
 }
 
